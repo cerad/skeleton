@@ -18,5 +18,5 @@ doctrine:
                         is_bundle: false
                         type: php
                         dir: '%kernel.project_dir%/config/mappings/default'
-                        prefix: 'Default' # Required
+                        prefix: 'App' # Required namespace prefix
                         #alias: Default

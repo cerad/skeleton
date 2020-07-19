@@ -10,7 +10,7 @@ trait RenderTwigTrait
     private Environment $twig;
 
     /** @required */
-    public function setTwig(Environment $twig)
+    public function injectTwig(Environment $twig)
     {
         $this->twig = isset($this->twig) ? $this->twig: $twig;
     }

@@ -11,7 +11,7 @@ trait RouterTrait
     private RouterInterface $router;
 
     /** @required */
-    public function setRouter(RouterInterface $router)
+    public function injectRouter(RouterInterface $router)
     {
         $this->router = isset($this->router) ? $this->router: $router;
     }

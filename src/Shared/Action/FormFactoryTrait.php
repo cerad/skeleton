@@ -13,7 +13,7 @@ trait FormFactoryTrait
     private FormFactoryInterface $formFactory;
 
     /** @required */
-    public function setFormFactory(FormFactoryInterface $formFactory)
+    public function injectFormFactory(FormFactoryInterface $formFactory)
     {
         $this->formFactory = isset($this->formFactory) ? $this->formFactory: $formFactory;
     }

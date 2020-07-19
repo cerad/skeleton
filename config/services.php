@@ -5,6 +5,8 @@ namespace Symfony\Component\DependencyInjection\Loader\Configurator;
 
 use App\Home\Index\HomeIndexAction;
 use App\Shared\Action\ActionInterface;
+use App\User\Init\UserInitCommand;
+use App\User\UserProvider;
 
 //use App\Person\Command\PersonTestCommand;
 //use App\Person\Edit\PersonEditAction;
@@ -19,6 +21,10 @@ return function (ContainerConfigurator $configurator) {
 
     // Home
     $services->set(HomeIndexAction::class);
+
+    // User
+    $services->set(UserProvider::class);
+    $services->set(UserInitCommand::class);
 
     //$services->load('App\\Home\\', '../src/Home/*')
     //    ->exclude('../src/Home/{}');

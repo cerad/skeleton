@@ -6,6 +6,8 @@ namespace Symfony\Component\DependencyInjection\Loader\Configurator;
 use App\Home\Index\HomeIndexAction;
 use App\Shared\Action\ActionInterface;
 use App\User\Init\UserInitCommand;
+use App\User\Login\UserLoginFormAuthenticator;
+use App\User\Login\UserLoginAction;
 use App\User\UserProvider;
 
 //use App\Person\Command\PersonTestCommand;
@@ -25,6 +27,8 @@ return function (ContainerConfigurator $configurator) {
     // User
     $services->set(UserProvider::class);
     $services->set(UserInitCommand::class);
+    $services->set(UserLoginAction::class);
+    $services->set(UserLoginFormAuthenticator::class);
 
     //$services->load('App\\Home\\', '../src/Home/*')
     //    ->exclude('../src/Home/{}');

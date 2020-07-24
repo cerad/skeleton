@@ -3,19 +3,16 @@
 // config/routes.php
 
 use App\Home\Index\HomeIndexAction;
+use App\User\Login\UserLoginAction;
 
-# use App\Person\Edit\PersonEditAction;
 use Symfony\Component\Routing\Loader\Configurator\RoutingConfigurator;
 
 return function (RoutingConfigurator $routes) {
 
     $routes->add('home_index', "/")->controller(HomeIndexAction::class);
-/*
-    $blogRoutes = $routes->collection('blog_')->prefix('blog');
-    $blogRoutes->add('edit','/edit')->controller(HomeIndexAction::class);
-    $blogRoutes->add('list','/list')->controller(HomeIndexAction::class);
 
-    $personRoutes = $routes->collection('person_')->prefix('person');
-    $personRoutes->add('edit','/edit')->controller(PersonEditAction::class);
-*/
+    $userRoutes = $routes->collection('user_')->prefix('user');
+    $userRoutes->add('login', '/login')->controller(UserLoginAction::class);
+    //$userRoutes->add('check', '/login-check');
+    $userRoutes->add('logout','/logout');
 };

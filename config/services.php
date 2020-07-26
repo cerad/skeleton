@@ -5,6 +5,8 @@ namespace Symfony\Component\DependencyInjection\Loader\Configurator;
 
 use App\Home\Index\HomeIndexAction;
 use App\Shared\Action\ActionInterface;
+use App\Shared\Template\PageTemplate;
+use App\Shared\Template\PageTemplateInterface;
 use App\User\Init\UserInitCommand;
 use App\User\Login\UserLoginFormAuthenticator;
 use App\User\Login\UserLoginAction;
@@ -20,6 +22,10 @@ return function (ContainerConfigurator $configurator) {
 
     $services->instanceof(ActionInterface::class)
         ->tag('controller.service_arguments');
+
+    // Shared
+    $services->set(PageTemplate::class);
+    $services->alias(PageTemplateInterface::class, PageTemplate::class);
 
     // Home
     $services->set(HomeIndexAction::class);

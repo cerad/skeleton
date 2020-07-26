@@ -25,4 +25,8 @@ trait FormFactoryTrait
     {
         return $this->formFactory->createBuilder(FormType::class, $data, $options);
     }
+    protected function createNamedForm(string $name, string $type, $data = null, array $options = []) : FormInterface
+    {
+        return $this->formFactory->createNamed($name,$type,$data,$options);
+    }
 }

@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace App\User\Init;
 
+use App\User\Register\NavBarComponent;
 use App\User\User;
 use App\User\UserProvider;
 use Doctrine\ORM\EntityManagerInterface;
@@ -32,13 +33,14 @@ class UserInitCommand extends Command
     }
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
+        $this->action();
         //$this->addUser();
 
         $userRepo = $this->em->getRepository(User::class);
         echo get_class($userRepo) . "\n";
 
         $user = $userRepo->loadUserByUsername('ahundiak');
-        dump($user);
+        //dump($user);
 
         return Command::SUCCESS;
     }
@@ -50,5 +52,16 @@ class UserInitCommand extends Command
         $user = new User('ahundiak',$hashedPassword);
         $this->em->persist($user);
         $this->em->flush();
+    }
+    private function action()
+    {
+        $navbar = new NavBarComponent();
+        $links  = [
+            "Games"       => "/#/games",
+            "Web Apps"    => "/#/web-apps",
+            "Mobile Apps" => "/#/mobile-apps"
+        ];
+        $html = $navbar->render('My Portfolio',$links);
+        echo $html;
     }
 }
